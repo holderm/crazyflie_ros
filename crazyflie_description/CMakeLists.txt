@@ -136,11 +136,9 @@ catkin_package(
 # )
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
- install(FILES
-   launch/crazyflie_rviz.launch
-   # myfile2
-   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
- )
+install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+install(DIRECTORY urdf DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+install(DIRECTORY meshes DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 #############
 ## Testing ##
