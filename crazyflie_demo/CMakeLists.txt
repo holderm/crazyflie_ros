@@ -13,7 +13,6 @@ find_package(catkin REQUIRED)
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
-# catkin_python_setup()
 
 ################################################
 ## Declare ROS messages, services and actions ##
@@ -116,10 +115,10 @@ catkin_package(
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-# install(PROGRAMS
-#   scripts/my_python_script
-#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+ install(PROGRAMS
+   scripts/const_thrust.py scripts/controller.py scripts/demo.py scripts/demo1.py scripts/publish_pose.py
+   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+ )
 
 ## Mark executables and/or libraries for installation
 # install(TARGETS crazyflie_demo crazyflie_demo_node
@@ -136,11 +135,22 @@ catkin_package(
 # )
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
-# install(FILES
-#   # myfile1
-#   # myfile2
-#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-# )
+ install(FILES
+        launch/controller.launch
+        launch/hover_vicon.launch
+        launch/hover_vrpn.launch
+        launch/multi_hover_vicon.launch
+        launch/multi_hover_vrpn.launch
+        launch/multi_teleop_ps3.launch
+        launch/multi_teleop_xbox360.launch
+        launch/ps3.launch
+        launch/teleop_ps3.launch
+        launch/teleop_xbox360.launch
+        launch/xbox360.launch
+   
+   # myfile2
+   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
+ )
 
 #############
 ## Testing ##

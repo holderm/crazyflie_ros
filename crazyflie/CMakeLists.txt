@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS message_generation std_msgs tf)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
+#catkin_python_setup()
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -66,6 +67,7 @@ generate_messages(
    std_msgs
 )
 
+
 ###################################
 ## catkin specific configuration ##
 ###################################
@@ -119,10 +121,10 @@ catkin_package(
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-# install(PROGRAMS
-#   scripts/my_python_script
-#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+ install(PROGRAMS
+   scripts/crazyflie_server.py scripts/crazyflie_add.py
+   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+ )
 
 ## Mark executables and/or libraries for installation
 # install(TARGETS crazyflie crazyflie_node
@@ -139,11 +141,11 @@ catkin_package(
 # )
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
-# install(FILES
-#   # myfile1
-#   # myfile2
-#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-# )
+ install(FILES
+   launch/crazyflie_server.launch
+   launch/crazyflie_add.launch
+   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
+ )
 
 #############
 ## Testing ##
