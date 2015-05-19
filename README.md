@@ -7,17 +7,42 @@ ROS Driver for Bitcraze Crazyflie (http://www.bitcraze.se/), with the following 
 * Publishes on-board sensors in ROS standard message formats
 * Supports ROS parameters to reconfigure crazyflie parameters
 
+Ashfaq fixed the CMake Install files and I give a couple of hints how to get the Crazyflie working with ROS.
+You find the original repo at
+https://github.com/whoenig/crazyflie_ros
+
 ## Installation
 
 Clone the package into your catkin workspace:
 ```
-git clone https://github.com/whoenig/crazyflie_ros.git
+git clone https://github.com/smarties181/crazyflie_ros.git
 ```
 
 Additionally, you should have the bitcraze SDK on your file system.
 See https://github.com/bitcraze/crazyflie-clients-python for details.
+Adapt the setting by open teleop_xbox360.launch
+  <arg name="crazyflieSDK" default="~/crazyflie/crazyflie-clients-python/lib" />
+  <arg name="uri" default="radio://0/60/250K" />  <- adapt this
+  <arg name="joy_dev" default="/dev/input/js1" /> <- adapt this
 
 If you want to use joystick teleoperation, you should setup the hector_quadrotor package (http://wiki.ros.org/hector_quadrotor).
+
+Now  install the package
+```
+catkin_make_isolated --install --force-cmake
+source /home/"yourusername"/catkin_ws/install_isolated/-setup.bash
+```
+Make sure you have the Crazyflie SDK installed. You'll find it here:
+```
+https://github.com/bitcraze/crazyflie-clients-python
+```
+Here you have to make some changes in order to install the cfclient libary correctly:
+open setup.py file, on line 63 you find cfclient.utils.inputdevices rename it to cfclient.utils.inputreaders
+
+make setup.sh executeable and install it:
+```
+sudo ./setup.sh
+```
 
 ## Usage
 
